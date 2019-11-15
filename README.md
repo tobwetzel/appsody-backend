@@ -20,7 +20,7 @@ run `local_setup.sh` to get mongodb running locally in docker as a daemon contai
 
 `npm start`
 
-goto [http://localhost:3000]()
+goto http://localhost:3001
 
 Try to register a new user.
 Registering with the same email twice should cause a message
@@ -31,7 +31,7 @@ Kill the server with `^C`
 
 In the root of the application run
 
-`appsody init appsodyhub/nodejs-express none`
+`appsody init incubator/nodejs-express none`
 
 And then lauch the server again but this time through appsody.  The code will use the running mongodb docker instance started before.
 
@@ -39,7 +39,7 @@ run `appsody run --docker-options "--env-file .env"`
 
 Go back to  [http://localhost:3000]() Try to register a new user. Registering with the same email used in the original mode above  should cause a message
 
-In index.js
+In `index.ejs`
 
 Add
 
@@ -72,7 +72,7 @@ Create a docker image of the application by running
 
 `appsody build`
 
-Now we need to create a descriptor for the application to run on OpenShift.  
+Now we need to create a descriptor for the application to run on OpenShift.
 
 `appsody deploy --generate-only`
 
@@ -96,6 +96,6 @@ Inline with the last entry in the file add the following with values substituted
 When complete we can push the image to docker hub and simultaneously start the deployment to OpenShift
 Replace <account> with your github details
 
-`appsody deploy -t <account>/appsody-node-demo --push  -n kabanero`
+`appsody deploy -t csantanapr/appsody-node-demo --push --knative -n kabanero`
 
-Visit your OpenShift server to see the demo deployed.  Find the related 'routes' and use the demo as before. 
+Visit your OpenShift server to see the demo deployed.  Find the related 'routes' and use the demo as before.

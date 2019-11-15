@@ -1,0 +1,52 @@
+apiVersion: appsody.dev/v1beta1
+kind: AppsodyApplication
+metadata:
+  annotations:
+    commit.image.appsody.dev/author: Carlos Santana <csantanapr@apache.org>
+    commit.image.appsody.dev/committer: Carlos Santana <csantanapr@apache.org>
+    commit.image.appsody.dev/date: Fri Nov 15 17:51:12 2019 -0500
+    commit.image.appsody.dev/message: update readme
+    image.opencontainers.org/created: "2019-11-15T18:13:15-05:00"
+    image.opencontainers.org/documentation: https://github.com/csantanapr/appsody-backend
+    image.opencontainers.org/revision: 38a0b85dec13aa32b00b2d88a0d85294b2ad3530
+    image.opencontainers.org/source: https://github.com/csantanapr/appsody-backend/tree/master
+    image.opencontainers.org/url: https://github.com/csantanapr/appsody-backend
+    stack.appsody.dev/configured: appsody/nodejs-express:0.2
+    stack.appsody.dev/created: 2019-11-11T10:44:58+0000
+    stack.appsody.dev/revision: dc03bec53c0bfa5b282e25c3359b6aea22609d70
+    stack.appsody.dev/tag: appsody/nodejs-express:0.2.9
+  creationTimestamp: null
+  labels:
+    image.opencontainers.org/title: appsody-backend
+    stack.appsody.dev/version: 0.2.9
+  name: appsody-backend
+spec:
+  applicationImage: csantanapr/appsody-backend
+  createKnativeService: false
+  expose: true
+  livenessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /live
+      port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 2
+  monitoring:
+    labels:
+      k8s-app: appsody-backend
+  readinessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /ready
+      port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 2
+    timeoutSeconds: 1
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+    port: 3000
+    type: NodePort
+  stack: nodejs-express
+  version: 1.0.0
+status: {}

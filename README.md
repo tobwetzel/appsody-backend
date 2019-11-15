@@ -96,6 +96,6 @@ Inline with the last entry in the file add the following with values substituted
 When complete we can push the image to docker hub and simultaneously start the deployment to OpenShift
 Replace <account> with your github details
 
-`appsody deploy -t csantanapr/appsody-node-demo --push --knative -n kabanero`
+`appsody deploy -t csantanapr/appsody-node-demo --push -n kabanero`
 
 Visit your OpenShift server to see the demo deployed.  Find the related 'routes' and use the demo as before.

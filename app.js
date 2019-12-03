@@ -12,17 +12,16 @@ app.use(cookieParser());
 
 var registrants = {};
 
-app.get('/', function(req, res) {
-  res.send('backend api kubecon')
+app.get('/', function (req, res) {
+  res.send('backend api is up')
 });
 
-app.post('/signup', function(req, res) {
+app.post('/signup', function (req, res) {
 
   var reg = {
     '_id': req.body.email,
     'name': req.body.name,
-    'preview': req.body.previewAccess,
-    'theme': req.body.theme
+    'preview': req.body.previewAccess
   };
 
   if (registrants[reg._id] == null) {
@@ -36,7 +35,7 @@ app.post('/signup', function(req, res) {
 
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

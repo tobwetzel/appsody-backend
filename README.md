@@ -10,7 +10,7 @@ Check out this repo
 
 run `npm install` to install the node dependencies
 
-run `npm audit fix`  to fix any audit issues
+run `npm audit fix`  to fix any audit issues.
 
 ## Run demo locally
 
